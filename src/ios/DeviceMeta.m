@@ -9,7 +9,7 @@
 
 @implementation DeviceMeta
 
-- (CDVPluginResult *)getDeviceMeta:(CDVInvokedUrlCommand*)command
+- (void)getDeviceMeta:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
     //NSString* echo = [command.arguments objectAtIndex:0];
@@ -74,7 +74,7 @@
 - (NSString *)getNetworkProvider {
     CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier = [netinfo subscriberCellularProvider];
-    return @"%@M", [carrier carrierName];
+    return [NSString stringWithFormat:@"%@", [carrier carrierName]];
 }
 
 @end
